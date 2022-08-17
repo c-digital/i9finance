@@ -135,6 +135,13 @@
                 @endif
                 @if(Gate::check('manage product & service'))
                     <li class="nav-item">
+                        <a href="{{ route('schedule.index') }}" class="nav-link {{ (Request::segment(1) == 'schedule')?'active':''}}">
+                            <i class="fas fa-calendar"></i>{{__('Schedule')}}
+                        </a>
+                    </li>
+                @endif
+                @if(Gate::check('manage product & service'))
+                    <li class="nav-item">
                         <a href="{{ route('productservice.index') }}" class="nav-link {{ (Request::segment(1) == 'productservice')?'active':''}}">
                             <i class="fas fa-shopping-cart"></i>{{__('Product & Service')}}
                         </a>

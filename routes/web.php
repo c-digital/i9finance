@@ -28,6 +28,8 @@ Route::get('projects/{project_id}/files/{file_id}/download', 'FileController@dow
 
 Route::resource('contracts', 'ContractController');
 
+Route::resource('schedule', 'ScheduleController');
+
 Route::get('/register/{lang?}', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 Route::get('/login/{lang?}', 'Auth\LoginController@showLoginForm')->name('login');
