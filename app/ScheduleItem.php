@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScheduleItem extends Model
 {
-    protected $fillable = ['schedule_id', 'customer_id', 'product_id', 'date_start', 'date_end', 'status'];
+    protected $fillable = ['timestamp', 'schedule_id', 'customer_id', 'product_id', 'date_start', 'date_end', 'status'];
 
     public $timestamps = false;
 
