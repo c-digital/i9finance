@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 17-08-2022 a las 11:38:25
+-- Tiempo de generación: 17-08-2022 a las 17:00:15
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.30
 
@@ -1644,11 +1644,13 @@ INSERT INTO `schedules` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `schedule_items` (
   `id` int(11) NOT NULL,
+  `timestamp` varchar(256) DEFAULT NULL,
   `schedule_id` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
   `date_start` varchar(256) DEFAULT NULL,
-  `date_end` varchar(256) DEFAULT NULL
+  `date_end` varchar(256) DEFAULT NULL,
+  `status` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2490,7 +2492,7 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT de la tabla `schedule_items`
 --
 ALTER TABLE `schedule_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `settings`
