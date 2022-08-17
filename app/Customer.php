@@ -269,4 +269,9 @@ class Customer extends Authenticatable
         return $invoices;
     }
 
+    public function items()
+    {
+        return $this->hasMany('App\ScheduleItem');
+    }
+
 }
