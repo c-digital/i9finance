@@ -30,6 +30,8 @@
 @push('script-page')
     <script>
         $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
             $('.event').click(function () {
                 timestamp = $(this).attr('data-timestamp');
 
@@ -39,6 +41,7 @@
                     success: function (response) {
                         $('#edit-event').find('[name=customer_id]').val(response.customer_id).change();
                         $('#edit-event').find('[name=product_id]').val(response.product_id).change();
+                        $('#edit-event').find('[name=user_id]').val(response.user_id).change();
                         $('#edit-event').find('[name=status]').val(response.status).change();
                         $('#edit-event').find('[name=date_start]').val(response.date_start);
                         $('#edit-event').find('[name=date_end]').val(response.date_end);
@@ -134,9 +137,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="1">
                                 @php
                                     $date_start = $weeks[0]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="'.$tooltip.'" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -144,9 +154,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="2">
                                 @php
                                     $date_start = $weeks[1]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -154,9 +171,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="3">
                                 @php
                                     $date_start = $weeks[2]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -164,9 +188,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="4">
                                 @php
                                     $date_start = $weeks[3]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -174,9 +205,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="5">
                                 @php
                                     $date_start = $weeks[4]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -184,9 +222,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="6">
                                 @php
                                     $date_start = $weeks[5]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -194,9 +239,16 @@
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="7">
                                 @php
                                     $date_start = $weeks[6]['date'] . ' ' . $hour . ':00';
-                                    $item = App\ScheduleItem::where('date_start', $date_start)->first();
+                                    $item = App\ScheduleItem::where('date_start', $date_start)
+                                        ->where('schedule_id', $schedule->id)
+                                        ->first();
+
                                     if ($item) {
-                                        echo '<div data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        $tooltip = "Paciente: {$item->customer->name}\n";
+                                        $tooltip .= "Profesional: {$item->user->name}\n";
+                                        $tooltip .= "Servicio: {$item->product->name}";
+
+                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -231,6 +283,17 @@
 
                                 @foreach($customers as $customer)
                                     <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_id">{{ __('Professional') }}</label>
+                            <select required name="user_id" class="form-control select2">
+                                <option value=""></option>
+
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -293,6 +356,17 @@
 
                                         @foreach($customers as $customer)
                                             <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="user_id">{{ __('Professional') }}</label>
+                                    <select required name="user_id" class="form-control select2">
+                                        <option value=""></option>
+
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

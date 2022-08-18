@@ -61,6 +61,7 @@ class ScheduleItemController extends Controller
                 'schedule_id' => $schedule_id,
                 'customer_id' => $request->customer_id,
                 'product_id'  => $request->product_id,
+                'user_id'     => $request->user_id,
                 'date_start'  => $date,
                 'date_end'    => $date,
                 'status'      => 'open'
@@ -98,6 +99,7 @@ class ScheduleItemController extends Controller
         $result['schedule_id'] = $first->schedule_id;
         $result['customer_id'] = $first->customer_id;
         $result['product_id']  = $first->product_id;
+        $result['user_id']     = $first->user_id;
         $result['date_start']  = $first->date_start;
         $result['date_end']    = $date_end;
         $result['status']      = $first->status;
@@ -131,6 +133,7 @@ class ScheduleItemController extends Controller
                 'schedule_id' => $schedule_id,
                 'customer_id' => $request->customer_id,
                 'product_id'  => $request->product_id,
+                'user_id'     => $request->user_id,
                 'date_start'  => $date,
                 'date_end'    => $date,
                 'status'      => $request->status

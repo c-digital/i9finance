@@ -41,6 +41,11 @@ class User extends Authenticatable
 
     public $settings;
 
+    public function items()
+    {
+        return $this->hasMany('App\ScheduleItem');
+    }
+
     public function authId()
     {
         return $this->id;

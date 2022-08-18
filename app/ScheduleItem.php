@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScheduleItem extends Model
 {
-    protected $fillable = ['timestamp', 'schedule_id', 'customer_id', 'product_id', 'date_start', 'date_end', 'status'];
+    protected $fillable = ['timestamp', 'schedule_id', 'customer_id', 'product_id', 'user_id', 'date_start', 'date_end', 'status'];
 
     public $timestamps = false;
 
@@ -25,10 +25,15 @@ class ScheduleItem extends Model
         return $this->belongsTo('App\ProductService');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function getColorAttribute()
     {
         if ($this->status == 'open') {
-            return 'alert alert-secondary';
+            return 'alert alert-info';
         }
 
         if ($this->status == 'in progress') {

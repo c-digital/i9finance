@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 17-08-2022 a las 17:00:15
+-- Tiempo de generación: 18-08-2022 a las 09:29:29
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.30
 
@@ -11,6 +11,12 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `i9finance_app`
@@ -240,7 +246,39 @@ INSERT INTO `chart_of_accounts` (`id`, `name`, `code`, `type`, `sub_type`, `is_e
 (61, 'Common Stock', 330, 5, 16, 1, NULL, 4, '2022-08-11 20:18:09', '2022-08-11 20:18:09'),
 (62, 'Owners Contribution', 300, 5, 16, 1, NULL, 4, '2022-08-11 20:18:09', '2022-08-11 20:18:09'),
 (63, 'Owners Draw', 310, 5, 16, 1, NULL, 4, '2022-08-11 20:18:09', '2022-08-11 20:18:09'),
-(64, 'Retained Earnings', 320, 5, 16, 1, NULL, 4, '2022-08-11 20:18:09', '2022-08-11 20:18:09');
+(64, 'Retained Earnings', 320, 5, 16, 1, NULL, 4, '2022-08-11 20:18:09', '2022-08-11 20:18:09'),
+(65, 'Accounts Receivable', 120, 1, 1, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(66, 'Computer Equipment', 160, 1, 2, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(67, 'Office Equipment', 150, 1, 2, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(68, 'Inventory', 140, 1, 3, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(69, 'Budget - Finance Staff', 857, 1, 6, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(70, 'Accumulated Depreciation', 170, 1, 7, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(71, 'Accounts Payable', 200, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(72, 'Accruals', 205, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(73, 'Office Equipment', 150, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(74, 'Clearing Account', 855, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(75, 'Employee Benefits Payable', 235, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(76, 'Employee Deductions payable', 236, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(77, 'Historical Adjustments', 255, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(78, 'Revenue Received in Advance', 835, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(79, 'Rounding', 260, 2, 8, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(80, 'Costs of Goods Sold', 500, 3, 11, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(81, 'Advertising', 600, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(82, 'Automobile Expenses', 644, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(83, 'Bad Debts', 684, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(84, 'Bank Revaluations', 810, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(85, 'Bank Service Charges', 605, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(86, 'Consulting & Accounting', 615, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(87, 'Depreciation', 700, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(88, 'General Expenses', 628, 3, 12, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(89, 'Interest Income', 460, 4, 13, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(90, 'Other Revenue', 470, 4, 13, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(91, 'Purchase Discount', 475, 4, 13, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(92, 'Sales', 400, 4, 13, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(93, 'Common Stock', 330, 5, 16, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(94, 'Owners Contribution', 300, 5, 16, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(95, 'Owners Draw', 310, 5, 16, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(96, 'Retained Earnings', 320, 5, 16, 1, NULL, 5, '2022-08-18 01:05:16', '2022-08-18 01:05:16');
 
 -- --------------------------------------------------------
 
@@ -834,7 +872,8 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\User', 1),
 (4, 'App\\User', 2),
 (5, 'App\\User', 3),
-(4, 'App\\User', 4);
+(4, 'App\\User', 4),
+(4, 'App\\User', 5);
 
 -- --------------------------------------------------------
 
@@ -1648,10 +1687,19 @@ CREATE TABLE `schedule_items` (
   `schedule_id` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `date_start` varchar(256) DEFAULT NULL,
   `date_end` varchar(256) DEFAULT NULL,
   `status` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `schedule_items`
+--
+
+INSERT INTO `schedule_items` (`id`, `timestamp`, `schedule_id`, `customer_id`, `product_id`, `user_id`, `date_start`, `date_end`, `status`) VALUES
+(55, '1660774053', 1, 1, 1, 1, '2022-08-15 08:00:00', '2022-08-15 08:00:00', 'in progress'),
+(56, '1660774053', 1, 1, 1, 1, '2022-08-15 08:15:00', '2022-08-15 08:15:00', 'in progress');
 
 -- --------------------------------------------------------
 
@@ -1830,7 +1878,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ty
 (1, 'Super Admin', 'superadmin@example.com', NULL, '$2y$10$LkiJbkndcWMN6LcCgSHOs.LPQEGz.sq8XeJXq563foBEGkQVm1bLi', 'super admin', '', 'es', 0, NULL, NULL, 1, 1, NULL, '2022-08-09 20:59:30', '2022-08-13 20:25:24'),
 (2, 'company', 'company@example.com', NULL, '$2y$10$P6dhYMx2.V/L30wFlOiO2O4C5OIGV2oGsW0rmJSdLPzlAOvQNVpGm', 'company', '', 'es', 1, 1, NULL, 1, 1, NULL, '2022-08-09 21:00:28', '2022-08-10 22:19:00'),
 (3, 'Nisa Delgado', 'accountant@example.com', NULL, '$2y$10$bqw77lysLh7y/SMBn/lfzOXRQZ7/qOWgCE0Ev0lAdmFMPM5hdES7e', 'accountant', '', 'es', 2, NULL, NULL, 1, 1, NULL, '2022-08-09 21:01:43', '2022-08-09 21:04:09'),
-(4, 'Tu Promotor', 'info@tupromotor.net', NULL, '$2y$10$DVaT7fEzgpxr8MsF6fwvoOa41ZUUfh/oiMSdSGPyHXi4B/1YdY3ti', 'company', NULL, 'es', 1, 2, '2022-09-13', 1, 1, NULL, '2022-08-11 20:18:09', '2022-08-13 23:44:53');
+(4, 'Tu Promotor', 'info@tupromotor.net', NULL, '$2y$10$DVaT7fEzgpxr8MsF6fwvoOa41ZUUfh/oiMSdSGPyHXi4B/1YdY3ti', 'company', NULL, 'es', 1, 2, '2022-09-13', 1, 1, NULL, '2022-08-11 20:18:09', '2022-08-13 23:44:53'),
+(5, 'Ayran iezzy da Silva lima', 'ayraniezzy@gmail.com', NULL, '$2y$10$CB5mtOPKXDBQ/Xo438qFLuSuujUN1/UWly4D5y6V80f28DiWkRNDG', 'company', NULL, 'es', 1, 1, NULL, 1, 1, NULL, '2022-08-18 01:05:16', '2022-08-18 01:05:16');
 
 -- --------------------------------------------------------
 
@@ -2276,7 +2325,7 @@ ALTER TABLE `bill_products`
 -- AUTO_INCREMENT de la tabla `chart_of_accounts`
 --
 ALTER TABLE `chart_of_accounts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT de la tabla `chart_of_account_sub_types`
@@ -2492,7 +2541,7 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT de la tabla `schedule_items`
 --
 ALTER TABLE `schedule_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `settings`
@@ -2528,7 +2577,7 @@ ALTER TABLE `transfers`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `user_coupons`
@@ -2571,3 +2620,7 @@ ALTER TABLE `role_has_permissions`
   ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

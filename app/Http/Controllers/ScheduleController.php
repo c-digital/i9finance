@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\User;
 use App\Schedule;
 use App\ProductService;
 use Carbon\Carbon;
@@ -74,7 +75,9 @@ class ScheduleController extends Controller
             $weeks[$i]['day']  = __($date->format('l'));
         }
 
-        return view('schedule.show', compact('weeks', 'schedules', 'schedule', 'hours', 'customers', 'services'));
+        $users = User::get();
+
+        return view('schedule.show', compact('weeks', 'schedules', 'schedule', 'hours', 'customers', 'services', 'users'));
     }
 
     public function edit($id)
