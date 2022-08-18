@@ -40,7 +40,7 @@
                     url: '/schedule-items/' + timestamp + '/edit',
                     success: function (response) {
                         $('#edit-event').find('[name=customer_id]').val(response.customer_id).change();
-                        $('#edit-event').find('[name=product_id]').val(response.product_id).change();
+                        $('#edit-event').find('[name=service_id]').val(response.service_id).change();
                         $('#edit-event').find('[name=user_id]').val(response.user_id).change();
                         $('#edit-event').find('[name=status]').val(response.status).change();
                         $('#edit-event').find('[name=date_start]').val(response.date_start);
@@ -114,10 +114,53 @@
 
 @section('content')
     <div class="row">
+
+        <div class="col-12">
+            <form action="">
+                <div class="row">
+                    <div class="col-4"></div>
+
+                    <div class="col-2">
+                        <input name="date" type="date" class="form-control" value="{{ $_GET['date'] ?? date('Y-m-d') }}">
+                    </div>
+
+                    <div class="col-2">
+                        <input type="submit" value="Ir a fecha" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <hr>
+
+        <div class="col-3">
+            <div class="text-center alert alert-info">{{ __('Open') . ': ' . $totals->open }}</div>
+        </div>
+
+        <div class="col-3">
+            <div class="text-center alert alert-primary">{{ __('In progress') . ': ' . $totals->in_progress }}</div>
+        </div>
+
+        <div class="col-3">
+            <div class="text-center alert alert-success">{{ __('Finished') . ': ' . $totals->finished }}</div>
+        </div>
+
+        <div class="col-3">
+            <div class="text-center alert alert-danger">{{ __('Cancelled') . ': ' . $totals->cancelled }}</div>
+        </div>
+
+        <hr>
+
         <div class="col-12">
             <table class="table">
                 <thead>
                     <tr>
+                        <th class="text-center">
+                            <a data-toggle="tooltip" data-placement="auto" title="Ir a la semana anterior" href="?date={{ $last }}">
+                                <i class="fa fa-arrow-left"></i>
+                            </a>
+                        </th>
+
                         <th class="text-center"></th>
 
                         @foreach($weeks as $day)
@@ -126,12 +169,19 @@
                                 {{ __($day['day']) }}
                             </th>
                         @endforeach
+
+                        <th class="text-center">
+                            <a data-toggle="tooltip" data-placement="auto" title="Ir a la semana siguiente" href="?date={{ $next }}">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach($hours as $hour)
                         <tr>
+                            <td></td>
                             <td>{{ $hour }}</td>
 
                             <td class="text-center cell" data-hour="{{ $hour }}" data-td="1">
@@ -144,7 +194,7 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="'.$tooltip.'" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -161,7 +211,7 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -178,7 +228,7 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -195,7 +245,7 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -212,7 +262,7 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -229,7 +279,7 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -246,12 +296,14 @@
                                     if ($item) {
                                         $tooltip = "Paciente: {$item->customer->name}\n";
                                         $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->product->name}";
+                                        $tooltip .= "Servicio: {$item->service->name}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
+
+                            <td></td>
                         </tr>
                     @endforeach
                 </tbody>       
@@ -299,8 +351,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="product_id">{{ __('Product') }}</label>
-                            <select required name="product_id" class="form-control select2">
+                            <label for="service_id">{{ __('Service') }}</label>
+                            <select required name="service_id" class="form-control select2">
                                 <option value=""></option>
 
                                 @foreach($services as $service)
@@ -372,8 +424,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="product_id">{{ __('Product') }}</label>
-                                    <select required name="product_id" class="form-control select2">
+                                    <label for="service_id">{{ __('Service') }}</label>
+                                    <select required name="service_id" class="form-control select2">
                                         <option value=""></option>
 
                                         @foreach($services as $service)

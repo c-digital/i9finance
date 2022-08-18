@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ScheduleItem extends Model
 {
-    protected $fillable = ['timestamp', 'schedule_id', 'customer_id', 'product_id', 'user_id', 'date_start', 'date_end', 'status'];
+    protected $fillable = ['timestamp', 'schedule_id', 'customer_id', 'service_id', 'user_id', 'date_start', 'date_end', 'status'];
 
     public $timestamps = false;
 
@@ -20,7 +20,7 @@ class ScheduleItem extends Model
         return $this->belongsTo('App\Customer');
     }
 
-    public function product()
+    public function service()
     {
         return $this->belongsTo('App\ProductService');
     }

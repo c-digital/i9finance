@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\User;
 use App\Schedule;
+use App\ScheduleItem;
 use App\ProductService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -51,7 +52,7 @@ class ScheduleController extends Controller
         return redirect('/schedule');
     }
 
-    public function show(Schedule $schedule)
+    public function show(Schedule $schedule, Request $request)
     {
         $hours = $this->hours;
 
@@ -59,9 +60,9 @@ class ScheduleController extends Controller
 
         $customers = Customer::get();
 
-        $services = ProductService::get();
+        $services = ProductService::where('type', 'service')->get();
 
-        $carbon = Carbon::now();
+        $carbon = Carbon::parse($request->date);
 
         $weeks[0]['date'] = $carbon->startOfWeek()->format('Y-m-d');
         $weeks[0]['showDate'] = $carbon->startOfWeek()->format('d/m/Y');
@@ -77,7 +78,22 @@ class ScheduleController extends Controller
 
         $users = User::get();
 
-        return view('schedule.show', compact('weeks', 'schedules', 'schedule', 'hours', 'customers', 'services', 'users'));
+        $last = Carbon::parse($request->date);
+        $last = $last->subDay(7)->format('Y-m-d');
+
+        $next = Carbon::parse($request->date);
+        $next = $next->addDay(7)->format('Y-m-d');
+
+        $items = ScheduleItem::where('schedule_id', $schedule->id)->get();
+
+        $totals = (object) [
+            'open'        => $items->where('status', 'open')->count(),
+            'in_progress' => $items->where('status', 'in progress')->count(),
+            'finished'    => $items->where('status', 'finished')->count(),
+            'cancelled'   => $items->where('status', 'cancelled')->count()
+        ];
+
+        return view('schedule.show', compact('totals', 'next', 'last', 'weeks', 'schedules', 'schedule', 'hours', 'customers', 'services', 'users'));
     }
 
     public function edit($id)

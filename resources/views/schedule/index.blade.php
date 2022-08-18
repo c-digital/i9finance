@@ -32,6 +32,7 @@
                                 <th>#</th>
                                 <th>{{__('Name')}}</th>
                                 <th>{{__('Description')}}</th>
+                                <th>{{__('Total events registered')}}</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $schedule->name }}</td>
                                         <td>{{ $schedule->description }}</td>
+                                        <td>{{ $schedule->items->count() }}</td>
                                         <td nowrap>
                                             <a href="{{ route('schedule.show', $schedule->id) }}" class="edit-icon bg-success">
                                                 <i class="fas fa-eye"></i>
