@@ -13,6 +13,10 @@
         td, .alert {
             cursor: pointer;
         }
+
+        .modal-dialog {
+            border: 1px solid black;
+        }
     </style>
 @endpush
 
@@ -45,6 +49,8 @@
                         $('#edit-event').find('[name=status]').val(response.status).change();
                         $('#edit-event').find('[name=date_start]').val(response.date_start);
                         $('#edit-event').find('[name=date_end]').val(response.date_end);
+                        $('#edit-event').find('[name=obs]').val(response.obs);
+                        $('#edit-event').find('[name=comment]').val(response.comment);
 
                         $('#edit-event').find('.edit-form').attr('action', '/schedule-items/' + response.timestamp);
 
@@ -68,6 +74,13 @@
 
 
             $('.cell').click(function () {
+                content = $(this).html();
+                content = content.trim();
+
+                if (content) {
+                    return false;
+                }
+
                 hour = $(this).attr('data-hour');
                 td = $(this).attr('data-td');
                 td = parseInt(td) - 1;
@@ -192,11 +205,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="'.$tooltip.'" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -209,11 +224,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -226,11 +243,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -243,11 +262,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -260,11 +281,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -277,11 +300,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -294,11 +319,13 @@
                                         ->first();
 
                                     if ($item) {
-                                        $tooltip = "Paciente: {$item->customer->name}\n";
-                                        $tooltip .= "Profesional: {$item->user->name}\n";
-                                        $tooltip .= "Servicio: {$item->service->name}";
+                                        $tooltip  = "Paciente: {$item->customer->name}</br>";
+                                        $tooltip .= "Profesional: {$item->user->name}</br>";
+                                        $tooltip .= "Servicio: {$item->service->name}</br>";
+                                        $tooltip .= "OBS: {$item->obs}</br>";
+                                        $tooltip .= "Comentario: {$item->comment}";
 
-                                        echo '<div data-toggle="tooltip" data-placement="auto" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
+                                        echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
                                 @endphp
                             </td>
@@ -359,6 +386,16 @@
                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="obs">{{ __('OBS') }}</label>
+                            <input type="text" name="obs" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comment">{{ __('Comment') }}</label>
+                            <input type="text" name="comment" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -446,6 +483,20 @@
                                 <div class="form-group">
                                     <label for="date_end">{{ __('Date end') }}</label>
                                     <input required type="datetime-local" step="900" name="date_end" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="obs">{{ __('OBS') }}</label>
+                                    <input type="text" name="obs" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="comment">{{ __('Comment') }}</label>
+                                    <input type="text" name="comment" class="form-control">
                                 </div>
                             </div>
 

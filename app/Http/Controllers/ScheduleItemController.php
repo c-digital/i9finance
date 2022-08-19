@@ -64,7 +64,9 @@ class ScheduleItemController extends Controller
                 'user_id'     => $request->user_id,
                 'date_start'  => $date,
                 'date_end'    => $date,
-                'status'      => 'open'
+                'status'      => 'open',
+                'comment'     => $request->comment,
+                'obs'         => $request->obs,
             ]);
         }
 
@@ -103,6 +105,8 @@ class ScheduleItemController extends Controller
         $result['date_start']  = $first->date_start;
         $result['date_end']    = $date_end;
         $result['status']      = $first->status;
+        $result['comment']     = $first->comment;
+        $result['obs']         = $first->obs;
 
         return $result;
     }
@@ -136,7 +140,9 @@ class ScheduleItemController extends Controller
                 'user_id'     => $request->user_id,
                 'date_start'  => $date,
                 'date_end'    => $date,
-                'status'      => $request->status
+                'status'      => $request->status,
+                'comment'     => $request->comment,
+                'obs'         => $request->obs,
             ]);
         }
 
