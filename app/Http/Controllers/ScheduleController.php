@@ -76,7 +76,7 @@ class ScheduleController extends Controller
             $weeks[$i]['day']  = __($date->format('l'));
         }
 
-        $users = User::get();
+        $users = User::where('created_by', auth()->user()->id)->get();
 
         $last = Carbon::parse($request->date);
         $last = $last->subDay(7)->format('Y-m-d');
