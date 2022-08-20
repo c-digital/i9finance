@@ -30,6 +30,15 @@ class ScheduleItem extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function getEndAttribute()
+    {
+        $item = ScheduleItem::where('timestamp', $this->timestamp)
+            ->orderByDesc('id')
+            ->first();
+            
+        return $item->date_end;
+    }
+
     public function getColorAttribute()
     {
         if ($this->status == 'open') {

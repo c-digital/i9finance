@@ -14,8 +14,8 @@
             cursor: pointer;
         }
 
-        .modal-dialog {
-            border: 1px solid black;
+        label {
+            color: #808080;
         }
     </style>
 @endpush
@@ -209,7 +209,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -228,7 +230,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -247,7 +251,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -266,7 +272,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -285,7 +293,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -304,7 +314,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
@@ -323,7 +335,9 @@
                                         $tooltip .= "Profesional: {$item->user->name}</br>";
                                         $tooltip .= "Servicio: {$item->service->name}</br>";
                                         $tooltip .= "OBS: {$item->obs}</br>";
-                                        $tooltip .= "Comentario: {$item->comment}";
+                                        $tooltip .= "Comentario: {$item->comment}<br>";
+                                        $tooltip .= "Fecha inicio: {$item->date_start}<br>";
+                                        $tooltip .= "Fecha fin: {$item->end}";
 
                                         echo '<div data-toggle="tooltip" data-placement="auto" data-html="true" title="' . $tooltip . '" data-timestamp="' . $item->timestamp . '" class="event ' . $item->color.'">' . $item->customer->name . '</div>';
                                     }
