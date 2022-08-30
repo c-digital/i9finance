@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contract extends Model
 {
-    protected $fillable = ['customer_id', 'project_id', 'theme', 'amount', 'type', 'date_start', 'date_end', 'description'];
+    protected $fillable = ['customer_id', 'project_id', 'theme', 'amount', 'type', 'date_start', 'date_end', 'description', 'content'];
 
     public $timestamps = false;
 

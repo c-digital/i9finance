@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 18-08-2022 a las 12:07:48
+-- Tiempo de generación: 30-08-2022 a las 16:31:34
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.30
 
@@ -365,15 +365,16 @@ CREATE TABLE `contracts` (
   `type` varchar(256) DEFAULT NULL,
   `date_start` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
-  `description` text
+  `description` text,
+  `content` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `contracts`
 --
 
-INSERT INTO `contracts` (`id`, `customer_id`, `project_id`, `theme`, `amount`, `type`, `date_start`, `date_end`, `description`) VALUES
-(1, 1, 2, 'Contrato de prueba', '123', 'Criative Digital', '2022-08-05', '2022-09-15', 'Descripción de prueba');
+INSERT INTO `contracts` (`id`, `customer_id`, `project_id`, `theme`, `amount`, `type`, `date_start`, `date_end`, `description`, `content`) VALUES
+(1, 1, 2, 'Contrato de prueba', '123', 'Criative Digital', '2022-08-05', '2022-09-15', 'Descripción de prueba', NULL);
 
 -- --------------------------------------------------------
 
@@ -492,6 +493,13 @@ CREATE TABLE `custom_field_values` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `custom_field_values`
+--
+
+INSERT INTO `custom_field_values` (`id`, `record_id`, `field_id`, `value`, `created_at`, `updated_at`) VALUES
+(1, 6, 1, '15', '2022-08-18 23:19:59', '2022-08-18 23:19:59');
 
 -- --------------------------------------------------------
 
@@ -867,7 +875,8 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (4, 'App\\User', 2),
 (5, 'App\\User', 3),
 (4, 'App\\User', 4),
-(4, 'App\\User', 5);
+(4, 'App\\User', 5),
+(6, 'App\\User', 6);
 
 -- --------------------------------------------------------
 
@@ -1345,7 +1354,8 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_by`, `created_at`, `up
 (2, 'customer', 'web', 0, '2022-08-09 20:59:30', '2022-08-09 20:59:30'),
 (3, 'vender', 'web', 0, '2022-08-09 20:59:32', '2022-08-09 20:59:32'),
 (4, 'company', 'web', 1, '2022-08-09 20:59:34', '2022-08-09 20:59:34'),
-(5, 'accountant', 'web', 2, '2022-08-09 21:00:28', '2022-08-09 21:00:28');
+(5, 'accountant', 'web', 2, '2022-08-09 21:00:28', '2022-08-09 21:00:28'),
+(6, 'Financiero', 'web', 4, '2022-08-18 23:19:29', '2022-08-18 23:19:29');
 
 -- --------------------------------------------------------
 
@@ -1647,7 +1657,13 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (152, 5),
 (153, 5),
 (154, 5),
-(155, 5);
+(155, 5),
+(1, 6),
+(2, 6),
+(3, 6),
+(4, 6),
+(5, 6),
+(8, 6);
 
 -- --------------------------------------------------------
 
@@ -1684,16 +1700,25 @@ CREATE TABLE `schedule_items` (
   `user_id` int(11) DEFAULT NULL,
   `date_start` varchar(256) DEFAULT NULL,
   `date_end` varchar(256) DEFAULT NULL,
-  `status` varchar(256) DEFAULT NULL
+  `status` varchar(256) DEFAULT NULL,
+  `comment` varchar(256) DEFAULT NULL,
+  `obs` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `schedule_items`
 --
 
-INSERT INTO `schedule_items` (`id`, `timestamp`, `schedule_id`, `customer_id`, `service_id`, `user_id`, `date_start`, `date_end`, `status`) VALUES
-(55, '1660774053', 1, 1, 1, 1, '2022-08-15 08:00:00', '2022-08-15 08:00:00', 'in progress'),
-(56, '1660774053', 1, 1, 1, 1, '2022-08-15 08:15:00', '2022-08-15 08:15:00', 'in progress');
+INSERT INTO `schedule_items` (`id`, `timestamp`, `schedule_id`, `customer_id`, `service_id`, `user_id`, `date_start`, `date_end`, `status`, `comment`, `obs`) VALUES
+(57, '1660866805', 1, 1, 1, 1, '2022-08-15 08:00:00', '2022-08-15 08:00:00', 'finished', 'Comentario 1', 'OBS 1'),
+(58, '1660866844', 1, 1, 1, 6, '2022-08-15 09:00:00', '2022-08-15 09:00:00', 'open', 'Comentario 2', 'OBS 2'),
+(59, '1660866844', 1, 1, 1, 6, '2022-08-15 09:15:00', '2022-08-15 09:15:00', 'open', 'Comentario 3', 'OBS 3'),
+(60, '1660940802', 1, 1, 1, 6, '2022-08-15 10:15:00', '2022-08-15 10:15:00', 'open', '211', '121'),
+(61, '1660940802', 1, 1, 1, 6, '2022-08-15 10:30:00', '2022-08-15 10:30:00', 'open', '211', '121'),
+(62, '1660940803', 1, 1, 1, 6, '2022-08-15 10:15:00', '2022-08-15 10:15:00', 'open', '211', '121'),
+(63, '1660940803', 1, 1, 1, 6, '2022-08-15 10:30:00', '2022-08-15 10:30:00', 'open', '211', '121'),
+(64, '1660941611', 1, 1, 1, 6, '2022-08-15 09:30:00', '2022-08-15 09:30:00', 'open', '211', '121'),
+(65, '1660941611', 1, 1, 1, 6, '2022-08-15 09:45:00', '2022-08-15 09:45:00', 'open', '211', '121');
 
 -- --------------------------------------------------------
 
@@ -1873,7 +1898,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ty
 (2, 'company', 'company@example.com', NULL, '$2y$10$P6dhYMx2.V/L30wFlOiO2O4C5OIGV2oGsW0rmJSdLPzlAOvQNVpGm', 'company', '', 'es', 1, 1, NULL, 1, 1, NULL, '2022-08-09 21:00:28', '2022-08-10 22:19:00'),
 (3, 'Nisa Delgado', 'accountant@example.com', NULL, '$2y$10$bqw77lysLh7y/SMBn/lfzOXRQZ7/qOWgCE0Ev0lAdmFMPM5hdES7e', 'accountant', '', 'es', 2, NULL, NULL, 1, 1, NULL, '2022-08-09 21:01:43', '2022-08-09 21:04:09'),
 (4, 'Tu Promotor', 'info@tupromotor.net', NULL, '$2y$10$DVaT7fEzgpxr8MsF6fwvoOa41ZUUfh/oiMSdSGPyHXi4B/1YdY3ti', 'company', NULL, 'es', 1, 2, '2022-09-13', 1, 1, NULL, '2022-08-11 20:18:09', '2022-08-13 23:44:53'),
-(5, 'Ayran iezzy da Silva lima', 'ayraniezzy@gmail.com', NULL, '$2y$10$CB5mtOPKXDBQ/Xo438qFLuSuujUN1/UWly4D5y6V80f28DiWkRNDG', 'company', NULL, 'es', 1, 1, NULL, 1, 1, NULL, '2022-08-18 01:05:16', '2022-08-18 01:05:16');
+(5, 'Ayran iezzy da Silva lima', 'ayraniezzy@gmail.com', NULL, '$2y$10$CB5mtOPKXDBQ/Xo438qFLuSuujUN1/UWly4D5y6V80f28DiWkRNDG', 'company', NULL, 'es', 1, 1, NULL, 1, 1, NULL, '2022-08-18 01:05:16', '2022-08-18 01:05:16'),
+(6, 'Erick Santos', 'erick.egs@gmail.com', NULL, '$2y$10$EDZgnKguwX5G5Wx4eio9u.JxIJFm61gMopTAiaiEp5PEn/v.vSZDy', 'Financiero', NULL, 'es', 4, NULL, NULL, 1, 1, NULL, '2022-08-18 23:19:59', '2022-08-18 23:19:59');
 
 -- --------------------------------------------------------
 
@@ -2373,7 +2399,7 @@ ALTER TABLE `custom_fields`
 -- AUTO_INCREMENT de la tabla `custom_field_values`
 --
 ALTER TABLE `custom_field_values`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `debit_notes`
@@ -2523,7 +2549,7 @@ ALTER TABLE `revenues`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `schedules`
@@ -2535,7 +2561,7 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT de la tabla `schedule_items`
 --
 ALTER TABLE `schedule_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `settings`
@@ -2571,7 +2597,7 @@ ALTER TABLE `transfers`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `user_coupons`
