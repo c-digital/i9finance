@@ -64,7 +64,14 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        return view('projects.show', compact('id', 'project'));
+
+        $complete = $project->tasks->where('status', 'Complete')->count();
+        $total = $project->tasks->count();
+
+        $complete = (100 * $complete) / $total;
+        $incomplete = 100 - $complete;
+
+        return view('projects.show', compact('id', 'project', 'complete', 'incomplete'));
     }
 
     public function edit($id)

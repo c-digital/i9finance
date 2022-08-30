@@ -6,6 +6,45 @@
 @endsection
 
 
+@push('script-page')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+    <script>
+        const data = {
+          labels: ['{{ __('Complete') }}', '{{ __('No complete') }}'],
+          datasets: [
+            {
+              label: 'Dataset 1',
+              data: [{{$complete}}, {{$incomplete}}],
+              backgroundColor: ['#011c4b', '#0f59ee'],
+            }
+          ]
+        };
+
+        const config = {
+          type: 'doughnut',
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: '{{ __('Project progress') }}'
+              }
+            }
+          },
+        };
+
+        const context = document.getElementById('chartjs').getContext('2d');
+
+        const chart = new Chart(context, config);
+    </script>
+@endpush
+
+
 @section('content')
     <ul class="mt-3 nav nav-pills">
         <li class="nav-item">
@@ -74,6 +113,10 @@
                                     {{ $user->name }}
                                 </p>
                             @endforeach
+                        </div>
+
+                        <div class="col-6">
+                            <canvas id="chartjs"></canvas>
                         </div>
                     </div>
                 </div>
