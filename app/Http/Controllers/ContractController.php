@@ -69,13 +69,6 @@ class ContractController extends Controller
     {
         $logo = asset(Storage::url('uploads/logo/'));
 
-        <li class="list-group-item"> {{ __('Project') }} [project]</li>
-        <li class="list-group-item"> {{ __('Theme') }} [theme]</li>
-        <li class="list-group-item"> {{ __('Amount') }} [amount]</li>
-        <li class="list-group-item"> {{ __('Type') }} [type]</li>
-        <li class="list-group-item"> {{ __('Date start') }} [date_start]</li>
-        <li class="list-group-item"> {{ __('Date end') }} [date_end]</li>
-
         $vars['[customer_name]'] = $contract->customer->name;
         $vars['[customer_contact]'] = $contract->customer->contact;
         $vars['[customer_email]'] = $contract->customer->email;
@@ -140,5 +133,22 @@ class ContractController extends Controller
     {
         Contract::find($id)->delete();
         return redirect('/contracts');
+    }
+
+    public function sign()
+    {
+        $sign = [
+            'name' => request()->name,
+            'date' => date('Y-m-d h:i:s'),
+            'ip' => $_SERVER['REMOTE_ADDR'],
+            'email' => request()->email
+        ];
+
+        $sign = json_encode($sign);
+
+        $contract = Contract::find(request()->id);
+        $contract->update(['sign' => $sign]);
+
+        return redirect('/contracts/' . request()->id);
     }
 }

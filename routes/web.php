@@ -28,6 +28,8 @@ Route::get('projects/{project_id}/files/{file_id}/download', 'FileController@dow
 
 Route::resource('contracts', 'ContractController');
 
+Route::post('contracts/sign', 'ContractController@sign');
+
 Route::resource('schedule', 'ScheduleController');
 Route::resource('schedule-items', 'ScheduleItemController');
 
