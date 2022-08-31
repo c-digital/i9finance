@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "anandsiddharth/laravel-paytm-wallet": "^1.0",
+        "barryvdh/laravel-dompdf": "^2.0",
         "coingate/coingate-php": "^3.0",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.2",
