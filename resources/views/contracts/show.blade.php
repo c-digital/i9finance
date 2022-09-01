@@ -59,7 +59,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <a href="" class="btn btn-secondary btn-sm">
+                    <a href="{{ '/contracts/pdf/' . $contract->id }}" class="btn btn-secondary btn-sm">
                         <i class="fa fa-file-pdf"></i> {{ __('Download') }}
                     </a>
 

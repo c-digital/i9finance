@@ -12,6 +12,19 @@
     </script>
 @endpush
 
+@push('css-page')
+    <style>
+        .modal-dialog {
+            background-color: white;
+        }
+
+        .modal-body {
+            padding-right: 20px !important;
+            padding-left: 20px !important;
+        }
+    </style>
+@endpush
+
 @section('content')
     {{ Form::model($contract, array('route' => array('contracts.update', $contract->id), 'method' => 'PUT')) }}
         <div class="row">
@@ -98,13 +111,12 @@
                                 </button>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Ver PDF</a>
-                                    <a class="dropdown-item" href="#">Descargar</a>
-                                    <a class="dropdown-item" href="#">Imprimir</a>
+                                    <a class="dropdown-item" target="_blank" href="{{ '/contracts/pdf/' . $contract->id }}">PDF</a>
+                                    <a class="dropdown-item" target="_blank" href="{{ '/contracts/print/' . $contract->id }}">Imprimir</a>
                                 </div>
                             </div>
 
-                            <a href="" class="btn btn-secondary">
+                            <a href="" class="btn btn-secondary" data-toggle="modal" data-target="#send">
                                 <i class="fa fa-envelope"></i>
                             </a>
                         </div>
@@ -165,6 +177,28 @@
             </div>
         </div>
     {{ Form::close() }}
+
+    <div class="modal" id="send" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('Send') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">{{ __('Send') }}</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 

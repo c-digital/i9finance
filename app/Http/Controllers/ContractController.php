@@ -6,8 +6,10 @@ use App\Contract;
 use App\Utility;
 use App\Customer;
 use App\Project;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Storage;
 
 class ContractController extends Controller
@@ -150,5 +152,81 @@ class ContractController extends Controller
         $contract->update(['sign' => $sign]);
 
         return redirect('/contracts/' . request()->id);
+    }
+
+    public function pdf($id)
+    {
+        $contract = Contract::find($id);
+
+        $logo = asset(Storage::url('uploads/logo/'));
+
+        $vars['[customer_name]'] = $contract->customer->name;
+        $vars['[customer_contact]'] = $contract->customer->contact;
+        $vars['[customer_email]'] = $contract->customer->email;
+
+        $vars['[billing_name]'] = $contract->billing_name;
+        $vars['[billing_country]'] = $contract->billing_country;
+        $vars['[billing_state]'] = $contract->billing_state;
+        $vars['[billing_city]'] = $contract->billing_city;
+        $vars['[billing_phone]'] = $contract->billing_phone;
+        $vars['[billing_zipcode]'] = $contract->billing_zipcode;
+        $vars['[billing_address]'] = $contract->billing_address;
+
+        $vars['[shipping_name]'] = $contract->shipping_name;
+        $vars['[shipping_country]'] = $contract->shipping_country;
+        $vars['[shipping_state]'] = $contract->shipping_state;
+        $vars['[shipping_city]'] = $contract->shipping_city;
+        $vars['[shipping_phone]'] = $contract->shipping_phone;
+        $vars['[shipping_zipcode]'] = $contract->shipping_zipcode;
+        $vars['[shipping_address]'] = $contract->shipping_address;
+
+        $vars['[project]'] = $contract->project;
+        $vars['[theme]'] = $contract->theme;
+        $vars['[amount]'] = $contract->amount;
+        $vars['[type]'] = $contract->type;
+        $vars['[date_start]'] = $contract->date_start;
+        $vars['[date_end]'] = $contract->date_end;
+
+        $pdf = Pdf::loadView('contracts.pdf', compact('contract', 'logo', 'vars'));
+
+        $filename = Str::slug($contract->theme) . '.pdf';
+
+        return $pdf->download($filename);
+    }
+
+    public function print($id)
+    {
+        $contract = Contract::find($id);
+
+        $logo = asset(Storage::url('uploads/logo/'));
+
+        $vars['[customer_name]'] = $contract->customer->name;
+        $vars['[customer_contact]'] = $contract->customer->contact;
+        $vars['[customer_email]'] = $contract->customer->email;
+
+        $vars['[billing_name]'] = $contract->billing_name;
+        $vars['[billing_country]'] = $contract->billing_country;
+        $vars['[billing_state]'] = $contract->billing_state;
+        $vars['[billing_city]'] = $contract->billing_city;
+        $vars['[billing_phone]'] = $contract->billing_phone;
+        $vars['[billing_zipcode]'] = $contract->billing_zipcode;
+        $vars['[billing_address]'] = $contract->billing_address;
+
+        $vars['[shipping_name]'] = $contract->shipping_name;
+        $vars['[shipping_country]'] = $contract->shipping_country;
+        $vars['[shipping_state]'] = $contract->shipping_state;
+        $vars['[shipping_city]'] = $contract->shipping_city;
+        $vars['[shipping_phone]'] = $contract->shipping_phone;
+        $vars['[shipping_zipcode]'] = $contract->shipping_zipcode;
+        $vars['[shipping_address]'] = $contract->shipping_address;
+
+        $vars['[project]'] = $contract->project;
+        $vars['[theme]'] = $contract->theme;
+        $vars['[amount]'] = $contract->amount;
+        $vars['[type]'] = $contract->type;
+        $vars['[date_start]'] = $contract->date_start;
+        $vars['[date_end]'] = $contract->date_end;
+
+        return view('contracts.print', compact('contract', 'logo', 'vars'));
     }
 }
