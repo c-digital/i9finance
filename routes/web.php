@@ -32,6 +32,8 @@ Route::post('contracts/sign', 'ContractController@sign');
 Route::get('contracts/pdf/{id}', 'ContractController@pdf');
 Route::get('contracts/print/{id}', 'ContractController@print');
 
+Route::get('projects/{project}/contracts', 'ProjectContractController@index');
+
 Route::resource('schedule', 'ScheduleController');
 Route::resource('schedule-items', 'ScheduleItemController');
 

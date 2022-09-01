@@ -28,6 +28,11 @@ class Project extends Model
         return $this->hasMany(File::class);
     }
 
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
+
     public function scopeStatus($query, $status)
     {
         if ($status) {
