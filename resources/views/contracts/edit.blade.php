@@ -181,21 +181,27 @@
     <div class="modal" id="send" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ __('Send') }}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                <form action="/contracts/send" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ __('Send') }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-                <div class="modal-body">
-                    <input type="email" name="email" class="form-control" required>
-                </div>
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $contract->id }}">
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">{{ __('Send') }}</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
-                </div>
+                        <label for="email">{{ __('Email') }}</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">{{ __('Send') }}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

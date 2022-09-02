@@ -6,12 +6,13 @@ use App\Contract;
 use App\Utility;
 use App\Customer;
 use App\Project;
+use App\Mail\ContractEmail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Storage;
-
 class ContractController extends Controller
 {
     public function index()
@@ -228,5 +229,12 @@ class ContractController extends Controller
         $vars['[date_end]'] = $contract->date_end;
 
         return view('contracts.print', compact('contract', 'logo', 'vars'));
+    }
+
+    public function send()
+    {
+        $contract = Contract::find(request()->id);
+
+        Mail::to(request()->email)->send(new ContractEmail($contract));
     }
 }

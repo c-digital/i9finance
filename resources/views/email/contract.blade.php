@@ -1,0 +1,1 @@
+<p>{{ __('Attached to this email is the PDF corresponding to the contract') }}</p>
