@@ -38,7 +38,9 @@ class TaskController extends Controller
 
     public function create($id)
     {
-        $members = User::get()->pluck('name', 'id');
+        $members = User::where('created_by', auth()->user()->id)
+            ->get()
+            ->pluck('name', 'id');
 
         $priorities = [
             ''       => '',

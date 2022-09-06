@@ -22,6 +22,7 @@
                 },
                 success: function (response) {
                     console.log(response);
+                    window.location.reload();
                 },
                 error: function (error) {
                     console.log(error.responseText);
@@ -43,6 +44,7 @@
                 },
                 success: function (response) {
                     console.log(response);
+                    window.location.reload();
                 },
                 error: function (error) {
                     console.log(error.responseText);
